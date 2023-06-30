@@ -9,6 +9,16 @@
         <attr name="andexo_show_full_screen" format="boolean" />
         <attr name="andexo_play_when_ready" format="boolean" />
         <attr name="andexo_show_controller" format="boolean" />
+        <attr name="andexo_show_leading" format="boolean" />
+        <attr name="andexo_video_title" format="string" />
+        <attr name="andexo_show_action_download" format="boolean" />
+        <attr name="andexo_show_action_delete" format="boolean" />
+        <attr name="andexo_show_action_share" format="boolean" />
+
+        <!-- Add color attributes -->
+        <attr name="andexo_player_background_color" format="color" />
+        <attr name="andexo_controller_background_color" format="color" />
+        <attr name="andexo_foreground_color" format="color" />
     </declare-styleable>
 
     <attr name="andexo_resize_mode" format="enum">

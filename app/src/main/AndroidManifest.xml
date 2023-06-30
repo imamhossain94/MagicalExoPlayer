@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".MainActivityKotlin"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="screenLayout|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

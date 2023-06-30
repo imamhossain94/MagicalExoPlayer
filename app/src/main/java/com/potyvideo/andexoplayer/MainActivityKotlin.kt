@@ -28,6 +28,9 @@ class MainActivityKotlin : AppCompatActivity(), AndExoPlayerListener, View.OnCli
         andExoPlayerView.setAndExoPlayerListener(this)
         andExoPlayerView.setPlayWhenReady(true)
 
+        andExoPlayerView.setTitle("Hello World !!")
+
+
         findViewById<AppCompatButton>(R.id.local).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.stream_mp4).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.stream_hls).setOnClickListener(this)
@@ -41,6 +44,12 @@ class MainActivityKotlin : AppCompatActivity(), AndExoPlayerListener, View.OnCli
 
     override fun onExoPlayerError(errorMessage: String?) {
     }
+
+    override fun onLeadingButtonClick() {
+        super.onLeadingButtonClick()
+        finish()
+    }
+
 
     override fun onClick(v: View?) {
         when (v?.id) {

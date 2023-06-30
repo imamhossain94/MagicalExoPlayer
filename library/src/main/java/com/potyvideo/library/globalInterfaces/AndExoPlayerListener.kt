@@ -18,4 +18,12 @@ interface AndExoPlayerListener {
 
     fun onExoReady() {}
 
+    fun onLeadingButtonClick() {}
+
+    fun onDownloadButtonClick() {}
+
+    fun onDeleteButtonClick() {}
+
+    fun onShareButtonClick() {}
+
 }

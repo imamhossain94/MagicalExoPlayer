@@ -23,7 +23,7 @@
     <color name="blackTransparentV2">#708A8A8A</color>
     <color name="toolbarTransparent">#95000000</color>
     <color name="divider">#C0BEBE</color>
-    <color name="playerColor">#E8263238</color>
-    <color name="playerColorDark">#141B1E</color>
+    <color name="playerColor">#E8000000</color>
+    <color name="playerColorDark">#E8000000</color>
 
 </resources>

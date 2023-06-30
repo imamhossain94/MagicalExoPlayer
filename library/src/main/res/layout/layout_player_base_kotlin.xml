@@ -8,7 +8,7 @@
         android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/playerColor"
+        android:background="#000000"
         app:auto_show="true"
         app:controller_layout_id="@layout/video_player_exo_controllers_kotlin"
         app:show_buffering="always"

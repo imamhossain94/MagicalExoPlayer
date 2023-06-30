@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
@@ -25,7 +26,7 @@ import com.potyvideo.library.utils.PublicValues
 
 class AndExoPlayerView(
     context: Context,
-    attributeSet: AttributeSet
+    attributeSet: AttributeSet,
 ) : AndExoPlayerRoot(context, attributeSet), /*Player.EventListener ,*/ Player.Listener {
 
     private lateinit var currSource: String
@@ -56,6 +57,18 @@ class AndExoPlayerView(
                     }
                     exitFullScreen.id -> {
                         setScreenMode(EnumScreenMode.MINIMISE)
+                    }
+                    leadingButton.id -> {
+                        andExoPlayerListener?.onLeadingButtonClick()
+                    }
+                    downloadButton.id -> {
+                        andExoPlayerListener?.onDownloadButtonClick()
+                    }
+                    deleteButton.id -> {
+                        andExoPlayerListener?.onDeleteButtonClick()
+                    }
+                    shareButton.id -> {
+                        andExoPlayerListener?.onShareButtonClick()
                     }
                 }
             }
@@ -135,6 +148,79 @@ class AndExoPlayerView(
                     )
                 )
             }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_show_leading)) {
+                setShowLeadingButton(
+                    typedArray.getBoolean(
+                        R.styleable.AndExoPlayerView_andexo_show_leading,
+                        true
+                    )
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_video_title)) {
+                setVideoTitle(
+                    typedArray.getString(
+                        R.styleable.AndExoPlayerView_andexo_video_title
+                    ) ?: "Video player"
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_show_action_download)) {
+                setShowDownloadButton(
+                    typedArray.getBoolean(
+                        R.styleable.AndExoPlayerView_andexo_show_action_download,
+                        false
+                    )
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_show_action_delete)) {
+                setShowDeleteButton(
+                    typedArray.getBoolean(
+                        R.styleable.AndExoPlayerView_andexo_show_action_delete,
+                        false
+                    )
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_show_action_share)) {
+                setShowShareButton(
+                    typedArray.getBoolean(
+                        R.styleable.AndExoPlayerView_andexo_show_action_share,
+                        true
+                    )
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_player_background_color)) {
+                setPlayerBackgroundColor(
+                    typedArray.getColor(
+                        R.styleable.AndExoPlayerView_andexo_player_background_color,
+                        ContextCompat.getColor(context, R.color.black)
+                    )
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_controller_background_color)) {
+                setControllerBackgroundColor(
+                    typedArray.getColor(
+                        R.styleable.AndExoPlayerView_andexo_controller_background_color,
+                        ContextCompat.getColor(context, R.color.playerColor)
+                    )
+                )
+            }
+
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_foreground_color)) {
+                setPlayerForegroundColor(
+                    typedArray.getColor(
+                        R.styleable.AndExoPlayerView_andexo_foreground_color,
+                        ContextCompat.getColor(context, R.color.white)
+                    )
+                )
+            }
+
+
 
             typedArray.recycle()
         }
@@ -378,6 +464,10 @@ class AndExoPlayerView(
         player.playWhenReady = playWhenReady
     }
 
+    fun setTitle(title: String) {
+        setVideoTitle(title)
+    }
+
     fun pausePlayer() {
         player.playWhenReady = false
         player.playbackState
@@ -433,19 +523,20 @@ class AndExoPlayerView(
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
-        // Checking the orientation of the screen
-        // Checking the orientation of the screen
+
         if (newConfig!!.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            // First Hide other objects (list-view or recyclerview), better hide them using Gone.
             hideSystemUI()
-            val params = playerView.layoutParams as FrameLayout.LayoutParams
+            val params = playerView.layoutParams
             params.width = ViewGroup.LayoutParams.MATCH_PARENT
             params.height = ViewGroup.LayoutParams.MATCH_PARENT
             playerView.layoutParams = params
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            // un hide your objects here.
             showSystemUI()
             setAspectRatio(currAspectRatio)
+            val params = playerView.layoutParams
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            playerView.layoutParams = params
         }
     }
 
