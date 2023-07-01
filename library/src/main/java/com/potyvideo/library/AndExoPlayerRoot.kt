@@ -119,7 +119,7 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
         leadingButton.setOnClickListener(customClickListener)
         downloadButton.setOnClickListener(customClickListener)
         deleteButton.setOnClickListener(customClickListener)
-        deleteButton.setOnClickListener(customClickListener)
+        shareButton.setOnClickListener(customClickListener)
     }
 
     protected fun showRetryView() {
