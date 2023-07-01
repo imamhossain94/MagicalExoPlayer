@@ -524,20 +524,21 @@ class AndExoPlayerView(
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
 
-        if (newConfig!!.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            hideSystemUI()
-            val params = playerView.layoutParams
-            params.width = ViewGroup.LayoutParams.MATCH_PARENT
-            params.height = ViewGroup.LayoutParams.MATCH_PARENT
-            playerView.layoutParams = params
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            showSystemUI()
-            setAspectRatio(currAspectRatio)
-            val params = playerView.layoutParams
-            params.width = ViewGroup.LayoutParams.MATCH_PARENT
-            params.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            playerView.layoutParams = params
-        }
+//        if (newConfig!!.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            hideSystemUI()
+//            val params = playerView.layoutParams
+//            params.width = ViewGroup.LayoutParams.MATCH_PARENT
+//            params.height = ViewGroup.LayoutParams.MATCH_PARENT
+//            playerView.layoutParams = params
+//        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            showSystemUI()
+//            setAspectRatio(currAspectRatio)
+//            val params = playerView.layoutParams
+//            params.width = ViewGroup.LayoutParams.MATCH_PARENT
+//            params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+//            playerView.layoutParams = params
+//        }
+
     }
 
 }
