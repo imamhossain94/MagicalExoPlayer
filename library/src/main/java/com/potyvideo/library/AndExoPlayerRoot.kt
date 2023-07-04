@@ -56,7 +56,7 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
     var downloadButton: AppCompatImageButton
     var deleteButton: AppCompatImageButton
     var shareButton: AppCompatImageButton
-    private var containerHeader:ConstraintLayout
+    private var containerHeader:LinearLayout
     private var containerControllers: ConstraintLayout
 
 
