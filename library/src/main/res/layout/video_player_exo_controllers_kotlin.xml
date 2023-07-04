@@ -45,12 +45,13 @@
 
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/container_header"
             android:layout_width="0dp"
             android:layout_height="@dimen/player_controller_base_height"
             android:layout_weight="1"
             android:background="@drawable/shape_player_border"
+            android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -58,12 +59,7 @@
             <FrameLayout
                 android:id="@+id/container_leading"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="40dp">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/exo_leading"
@@ -78,25 +74,21 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/exo_video_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_toEndOf="@id/container_leading"
-                android:layout_toRightOf="@id/container_leading"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:gravity="center|start"
+                android:maxLines="1"
                 android:padding="5dp"
+                android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/container_leading"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:ellipsize="end"/>
 
             <FrameLayout
                 android:id="@+id/container_action_download"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/container_action_delete"
-                app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone">
 
                 <androidx.appcompat.widget.AppCompatImageButton
@@ -105,7 +97,6 @@
                     android:layout_height="match_parent"
                     android:background="@color/blackTransparent"
                     android:tint="@color/white"
-                    android:visibility="visible"
                     app:srcCompat="@drawable/ic_action_download" />
 
             </FrameLayout>
@@ -114,9 +105,6 @@
                 android:id="@+id/container_action_delete"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/container_action_share"
-                app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone">
 
                 <androidx.appcompat.widget.AppCompatImageButton
@@ -149,7 +137,7 @@
 
             </FrameLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container_controllers"
