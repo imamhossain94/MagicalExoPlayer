@@ -6,6 +6,7 @@ import android.content.ContextWrapper
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.TypedArray
+import android.opengl.Visibility
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -466,6 +467,10 @@ class AndExoPlayerView(
 
     fun setTitle(title: String) {
         setVideoTitle(title)
+    }
+
+    fun setDeleteButtonVisibility(visibility: Int) {
+        setHeaderDeleteButtonVisibility(visibility)
     }
 
     fun pausePlayer() {

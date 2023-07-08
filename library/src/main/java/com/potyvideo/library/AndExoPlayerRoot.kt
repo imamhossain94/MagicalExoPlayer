@@ -3,6 +3,7 @@ package com.potyvideo.library
 import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
+import android.opengl.Visibility
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
@@ -206,6 +207,10 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
             actionDeleteContainer.visibility = VISIBLE
         else
             actionDeleteContainer.visibility = GONE
+    }
+
+    protected fun setHeaderDeleteButtonVisibility(visibility: Int) {
+        actionDeleteContainer.visibility = visibility
     }
 
     protected fun setShowShareButton(value: Boolean = false) {
