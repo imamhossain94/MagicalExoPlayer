@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -221,12 +222,21 @@ class AndExoPlayerView(
             }
 
             if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_leading_icon)) {
-                typedArray.getDrawable(
-                    R.styleable.AndExoPlayerView_andexo_leading_icon
-                )?.let { drawable ->
-                    setPlayerLeadingDrawable(
-                        drawable
+                val typedValue = TypedValue()
+                typedArray.getValue(R.styleable.AndExoPlayerView_andexo_leading_icon, typedValue)
+                if (typedValue.type == TypedValue.TYPE_REFERENCE) {
+                    typedArray.getDrawable(R.styleable.AndExoPlayerView_andexo_leading_icon)?.let { drawable ->
+                        setPlayerLeadingDrawable(drawable)
+                    }
+                } else if (typedValue.type in arrayOf(TypedValue.TYPE_INT_COLOR_ARGB8,
+                        TypedValue.TYPE_INT_COLOR_ARGB4,
+                        TypedValue.TYPE_INT_COLOR_RGB8,
+                        TypedValue.TYPE_INT_COLOR_RGB4)) {
+                    val color = typedArray.getColor(
+                        R.styleable.AndExoPlayerView_andexo_leading_icon,
+                        ContextCompat.getColor(context, R.color.white)
                     )
+                    setPlayerLeadingIconColor(color)
                 }
             }
 

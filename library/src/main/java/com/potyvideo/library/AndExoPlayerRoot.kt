@@ -263,6 +263,11 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
         leadingButton.setImageDrawable(drawable)
     }
 
+    fun setPlayerLeadingIconColor(color: Int) {
+        val colorStateList = ColorStateList.valueOf(color)
+        leadingButton.imageTintList = colorStateList
+    }
+
     protected fun setShowScreenModeButton(screenMode: EnumScreenMode = EnumScreenMode.MINIMISE) {
         when (screenMode) {
             EnumScreenMode.FULLSCREEN -> {
