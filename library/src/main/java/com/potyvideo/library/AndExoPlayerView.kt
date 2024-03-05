@@ -6,7 +6,6 @@ import android.content.ContextWrapper
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.TypedArray
-import android.opengl.Visibility
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -221,7 +220,15 @@ class AndExoPlayerView(
                 )
             }
 
-
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_leading_icon)) {
+                typedArray.getDrawable(
+                    R.styleable.AndExoPlayerView_andexo_leading_icon
+                )?.let { drawable ->
+                    setPlayerLeadingDrawable(
+                        drawable
+                    )
+                }
+            }
 
             typedArray.recycle()
         }

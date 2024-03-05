@@ -3,6 +3,7 @@ package com.potyvideo.library
 import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.opengl.Visibility
 import android.os.Build
 import android.util.AttributeSet
@@ -256,6 +257,10 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
         progress.setUnplayedColor(ColorUtils.setAlphaComponent(color, 128))
         progress.setScrubberColor(color)
         progress.setBufferedColor(ColorUtils.setAlphaComponent(color, 178))
+    }
+
+    protected fun setPlayerLeadingDrawable(drawable: Drawable) {
+        leadingButton.setImageDrawable(drawable)
     }
 
     protected fun setShowScreenModeButton(screenMode: EnumScreenMode = EnumScreenMode.MINIMISE) {
