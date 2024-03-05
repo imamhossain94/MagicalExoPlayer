@@ -222,11 +222,12 @@ class AndExoPlayerView(
                 )
             }
 
-//            val leadingIcon = typedArray.getDrawable(R.styleable.AndExoPlayerView_andexo_leading_icon)
-//            if (leadingIcon != null) {
-//                setPlayerLeadingDrawable(leadingIcon)
-//            }
-
+            try{
+                val leadingIcon = typedArray.getDrawable(R.styleable.AndExoPlayerView_andexo_leading_icon)
+                if (leadingIcon != null) {
+                    setPlayerLeadingDrawable(leadingIcon)
+                }
+            } catch (_:Exception) {}
 
             typedArray.recycle()
         }
