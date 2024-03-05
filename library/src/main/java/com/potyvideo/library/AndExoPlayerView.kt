@@ -7,10 +7,11 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.util.TypedValue
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.TrackGroupArray
@@ -97,7 +98,7 @@ class AndExoPlayerView(
         attributeSet.let {
 
             val typedArray: TypedArray =
-                context.obtainStyledAttributes(it, R.styleable.AndExoPlayerView)
+                context.theme.obtainStyledAttributes(it, R.styleable.AndExoPlayerView, 0, 0)
 
             if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_aspect_ratio)) {
                 val aspectRatio = typedArray.getInteger(
@@ -221,24 +222,11 @@ class AndExoPlayerView(
                 )
             }
 
-            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_leading_icon)) {
-                val typedValue = TypedValue()
-                typedArray.getValue(R.styleable.AndExoPlayerView_andexo_leading_icon, typedValue)
-                if (typedValue.type == TypedValue.TYPE_REFERENCE) {
-                    typedArray.getDrawable(R.styleable.AndExoPlayerView_andexo_leading_icon)?.let { drawable ->
-                        setPlayerLeadingDrawable(drawable)
-                    }
-                } else if (typedValue.type in arrayOf(TypedValue.TYPE_INT_COLOR_ARGB8,
-                        TypedValue.TYPE_INT_COLOR_ARGB4,
-                        TypedValue.TYPE_INT_COLOR_RGB8,
-                        TypedValue.TYPE_INT_COLOR_RGB4)) {
-                    val color = typedArray.getColor(
-                        R.styleable.AndExoPlayerView_andexo_leading_icon,
-                        ContextCompat.getColor(context, R.color.white)
-                    )
-                    setPlayerLeadingIconColor(color)
-                }
-            }
+//            val leadingIcon = typedArray.getDrawable(R.styleable.AndExoPlayerView_andexo_leading_icon)
+//            if (leadingIcon != null) {
+//                setPlayerLeadingDrawable(leadingIcon)
+//            }
+
 
             typedArray.recycle()
         }

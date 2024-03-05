@@ -21,7 +21,7 @@
         <attr name="andexo_foreground_color" format="color" />
 
         <!-- Icons -->
-        <attr name="andexo_leading_icon" format="reference|color" />
+        <attr name="andexo_leading_icon" format="color" />
 
     </declare-styleable>
 

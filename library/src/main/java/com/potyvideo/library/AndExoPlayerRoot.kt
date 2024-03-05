@@ -259,7 +259,7 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
         progress.setBufferedColor(ColorUtils.setAlphaComponent(color, 178))
     }
 
-    protected fun setPlayerLeadingDrawable(drawable: Drawable) {
+    protected fun setPlayerLeadingDrawable(drawable: Drawable?) {
         leadingButton.setImageDrawable(drawable)
     }
 

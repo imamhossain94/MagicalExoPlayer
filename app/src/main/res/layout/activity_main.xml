@@ -9,6 +9,8 @@
         android:id="@+id/andExoPlayerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:andexo_leading_icon="@color/blue"
+        app:andexo_controller_background_color="@color/blue"
         app:andexo_aspect_ratio="aspect_16_9"
         app:andexo_loop="finite"
         app:andexo_play_when_ready="true"
