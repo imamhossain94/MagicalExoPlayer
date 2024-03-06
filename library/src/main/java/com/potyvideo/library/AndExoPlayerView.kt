@@ -458,6 +458,7 @@ class AndExoPlayerView(
     }
 
     fun setResizeMode(resizeMode: EnumResizeMode) {
+        currResizeMode = resizeMode
         when (resizeMode) {
             EnumResizeMode.FIT -> playerView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
             EnumResizeMode.FILL -> playerView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FILL
