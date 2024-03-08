@@ -71,6 +71,7 @@ abstract class AndExoPlayerRoot @JvmOverloads constructor(
     var currMute: EnumMute = EnumMute.UNMUTE
     var currPlaybackSpeed: EnumPlaybackSpeed = EnumPlaybackSpeed.NORMAL
     var currScreenMode: EnumScreenMode = EnumScreenMode.MINIMISE
+    var controllerVisibility: EnumControllerVisibility = EnumControllerVisibility.VISIBLE
 
     init {
 

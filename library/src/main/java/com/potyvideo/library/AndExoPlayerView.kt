@@ -142,6 +142,15 @@ class AndExoPlayerView(
                 )
             }
 
+            if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_controller_visibility)) {
+                setControllersVisibility(
+                    typedArray.getInt(
+                        R.styleable.AndExoPlayerView_andexo_controller_visibility,
+                        0
+                    )
+                )
+            }
+
             if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_show_full_screen)) {
                 setShowFullScreenButton(
                     typedArray.getBoolean(
@@ -372,10 +381,21 @@ class AndExoPlayerView(
     }
 
     fun setShowControllers(showControllers: Boolean = true) {
-        if (showControllers)
-            setShowTimeOut(4000)
-        else
-            setShowTimeOut(0)
+        if(controllerVisibility == EnumControllerVisibility.VISIBLE){
+            if (showControllers)
+                setShowTimeOut(0)
+            else
+                setShowTimeOut(4000)
+        }
+    }
+
+    fun setControllersVisibility(visibility: Int = 0) {
+        controllerVisibility = if (visibility == 1) {
+            setShowTimeOut(86400000)
+            EnumControllerVisibility.INVISIBLE
+        } else {
+            EnumControllerVisibility.VISIBLE
+        }
     }
 
     fun setShowTimeOut(showTimeoutMs: Int) {
