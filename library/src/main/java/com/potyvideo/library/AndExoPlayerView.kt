@@ -144,9 +144,9 @@ class AndExoPlayerView(
 
             if (typedArray.hasValue(R.styleable.AndExoPlayerView_andexo_controller_visibility)) {
                 setControllersVisibility(
-                    typedArray.getInt(
+                    typedArray.getInteger(
                         R.styleable.AndExoPlayerView_andexo_controller_visibility,
-                        0
+                        EnumControllerVisibility.VISIBLE.value
                     )
                 )
             }
@@ -381,19 +381,18 @@ class AndExoPlayerView(
     }
 
     fun setShowControllers(showControllers: Boolean = true) {
-        if(controllerVisibility == EnumControllerVisibility.VISIBLE){
-            if (showControllers)
-                setShowTimeOut(0)
-            else
-                setShowTimeOut(4000)
-        }
+        if (showControllers)
+            setShowTimeOut(0)
+        else
+            setShowTimeOut(4000)
     }
 
     fun setControllersVisibility(visibility: Int = 0) {
         controllerVisibility = if (visibility == 1) {
-            setShowTimeOut(86400000)
+            hideController()
             EnumControllerVisibility.INVISIBLE
         } else {
+            showController()
             EnumControllerVisibility.VISIBLE
         }
     }
