@@ -245,11 +245,11 @@ class AndExoPlayerView(
     override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {
     }
 
-    override fun onTracksChanged(
-        trackGroups: TrackGroupArray,
-        trackSelections: TrackSelectionArray
-    ) {
-    }
+//    override fun onTracksChanged(
+//        trackGroups: TrackGroupArray,
+//        trackSelections: TrackSelectionArray
+//    ) {
+//    }
 
     override fun onPlayerError(error: PlaybackException) {
         showRetryView(error.message)
